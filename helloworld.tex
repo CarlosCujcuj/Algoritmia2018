@@ -1,0 +1,75 @@
+
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage[english]{babel}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\begin{document}
+
+\begin{frame}
+
+    \frametitle{Problema 1}
+
+    \begin{algorithm}[H]
+        \caption{Busqueda Lineal}
+        \begin{algorithmic}[1]
+        \Procedure{Busqueda}{$xs$, $v$}
+        \For{$i\gets 1\ \mathbf{to}\ len(xs) + 1$}
+        
+        \If{$i > \mathtt{len}(xs)$ }
+        \State return null
+        \ElsIf{$v\ \mathbf{equals}\ xs[i]$}
+        \State return i
+        \EndIf
+        
+        \State {$i\gets i+1$}
+
+        \EndFor
+        \EndProcedure
+        \end{algorithmic}
+    \end{algorithm}
+     \textbf{Loop Invariant:} todos los valores anteriores al indice \textbf{i} no coinciden con el valor que se busca \textbf{v}
+    
+\end{frame}
+
+\begin{frame}
+
+\frametitle{Problema 2}
+\includegraphics[width=8cm]{pt.png}
+\newline
+\ O( $n \times p \times m$ ) 
+\newline Debido a que debe de correr nested loops  O( $n \times n \times n$ ) 
+\newline El running time del algoritmo es O({$n^3$})
+\end{frame}
+
+\begin{frame}
+\frametitle{Problema 3}
+\ \textbf{Best case Bubble Sort:} {$\Omega$} ( n ) 
+\newline  Ocurre cuando todos los valores del arreglo se encuentran de forma ascendente, si este es el orden que se desea. En este caso solo compara los valores pero nunca realiza el swap.
+\newline 
+\newline 
+\ \textbf{Best case Insertion Sort:} {$\Omega$} ( n )  
+\newline  Igual que en Bubble Sort, ocurre cuando todos los valores del arreglo se encuentran de forma ascendente, si este es el orden que se desea. Igualmente nunca se realiza un swap, solamente compara los valores
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Problema 3}
+\ \textbf{Worst case Bubble Sort:} O( $n^2$ ) 
+\newline Ocurre cuando todo el arreglo esta de forma descendente y se quiere ordenar ascendentemente o viceversa, se hace compara por parejas y se hacen swap todas las posiciones que encuentre en el camino hasta su lugar debido, esto involucra recorrer el arreglo varias veces desde el inicio hasta el final
+\newline 
+\newline
+\ \textbf{Worst case Insertion Sort:} O( $n^2$ ) 
+\newline También ocurre cuando todos los valores del arreglo se presentan de forma descendente y el objetivo es que estén ordenados ascendentemente, este algoritmo compara parejas y las hace swap  con la diferencia que almacena un indice para luego de dejar el valor en su lugar indicado, regresa a este indice y así no recorrer el arreglo como en Bubble Sort
+\end{frame}
+
+
+
+\end{document}
+
+
+
+
