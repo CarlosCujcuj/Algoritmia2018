@@ -1,0 +1,45 @@
+
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage[english]{babel}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\begin{document}
+\begin{frame}
+\frametitle{Problema 3}
+\begin{algorithm}[H]
+\caption{Max-Heapify}
+
+\begin{algorithmic}[1]
+        \Procedure{Max-Heapify}{$A$, $i$}
+
+\While {$u \neq{}\ 0$}
+	\If{$ Left(i) \neq{}\  nil \textbf{ or } Right(i) \neq nil $ }
+		\State {$u \gets 1$}
+		\State $l \gets Left(i)$
+		\State $r \gets Right(i) $
+		\If{$ l \leq  A.heap-size  \textbf{ and }  A[l] > A[i] $ }
+			\State $largest \gets l$
+		\Else {$ \ largest \gets i$}
+		\EndIf
+		\If{$ r \leq  A.heap-size  \textbf{ and }  A[r] > A[largest] $ }
+			\State $largest \gets r$
+		\EndIf 
+		\If{$ r \neq{} i $ }
+		\State {$ \textbf{exchange } A[i] \textbf{ with } A[largest]$}
+		\EndIf 
+	\Else {$ \ u \gets 0$}
+	\EndIf
+\EndWhile
+
+
+
+\EndProcedure
+        \end{algorithmic}
+        
+\end{algorithm}
+\end{frame}
+\end{document}
