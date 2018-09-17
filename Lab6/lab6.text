@@ -1,0 +1,107 @@
+
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage[english]{babel}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+
+\begin{document}
+
+\begin{frame}
+\frametitle{Problema 1}
+\begin{algorithm}[H]
+\caption{Algoritmos Codiciosos}
+
+\begin{algorithmic}[1]
+        \Procedure{Fracciones-Egipcias}{$numerador$, $denominador$}
+        		\State Print (numdr + ' / ' + denomdr + ' = ' ) 
+		\newline
+		\While {$Termina \neq{}\  'Si' $} 
+			\State $aprx \gets Floor(numdr / denomdr)$ 
+			\State $Print( '1 / ' +  (aprx + 1) )$ \textit{// Fraccion Unitaria}
+			\State $res \gets (numdr / denomdr) -  (1 / (aprx + 1) )$  \textit{// residuo}
+			\newline
+			\If{$ getNumerador(res) \neq{}\ 1  $ }
+				\State {$numdr\gets getDenomdr(res)$}
+				\State {$denomdr\gets getNumerador(res)$}
+			\Else {$ $}
+				\State Print 'Se encontró la fracción unitaria mas cercana'
+				\State {$Termina\gets 'Si' $}
+			\EndIf			
+		\EndWhile
+
+\EndProcedure
+        \end{algorithmic}
+\end{algorithm}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Problema 1}
+ \textbf{- Desarrollen un algoritmo codicioso que resuelva las fracciones egipcias y describan por que es codicioso:}
+ \newline
+ \newline
+Es codicioso porque en el loop va generando las fracciones unitarias una tras otra. Sin embargo, se podría descomponer cada fracción entre mas fracciones. Este algoritmo solo enfoca en su entorno, es decir, en el resultado al momento. No se preocupa por conocer si hay otra combinación posible de fracciones unitarias
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Problema 2}
+\begin{algorithm}[H]
+\caption{Algoritmos Codiciosos + Dinamicos}
+\begin{algorithmic}[1]
+        \Procedure{Knapsack Greedy}{$Valor$, $Peso$,$ArrDiv$, $PesMax$}
+        		\State {$MaxPes\gets PesMax $}
+		\While {$MaxPes >  0 $} 
+			\State {$i\gets   GetIndex( Max(ArrDiv) )$}
+			\If{$  ArrDiv[i] < MaxPes  $ }
+				\State $MaxPes \mathrel{-}= ArrDiv[i]$
+				\State $Val \mathrel{+}= Valor[i]$
+				\State $Wgth\mathrel{+}= Peso[i]$
+				\State {$ArrDiv[i] \gets 0$}
+			\Else {$ $}
+				\State $ArrDiv[i] \mathrel{-}= MaxPes$
+				\State $Val \mathrel{+}= (MaxPes/Peso[i])*Valor[i] $
+				\State $Wgth \mathrel{+}= (MaxPes/Peso[i])*Peso[i] $
+				\State $MaxPes \mathrel{-}= MaxPes$
+				
+			\EndIf
+			\EndWhile	
+			
+			\State Print “Valor = “ + Val
+			\State Print  “Peso = “ + Wgth
+	\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+\end{frame}
+\begin{frame}
+\frametitle{Problema 2}
+\begin{algorithm}[H]
+\caption{Algoritmos Codiciosos + Dinamicos}
+\begin{algorithmic}[1]
+\Procedure{Knapsack Dynamic}{$Valor$, $Peso$,$ArrDiv$, $PesMax$, $n$}
+	
+	\State {$K \gets [[0 for x in range(W+1)] for x in range(n+1)] $}
+	
+	\For{$i \ \mathbf{In Range}\ (n + 1)$}
+		\For{$w \ \mathbf{In Range}\ (w+ 1)$}
+			\If{$ i == 0 \  or \ w == 0$}
+				\State {$K[i][W] \gets 0$}
+			\ElsIf{$ wt[i-1] \gets  w$}
+				\State {$ K[i][w] \gets max(val[i-1] + K[i-1][w-wt[i-1]],  K[i-1][w])  $}
+			\Else {$ \ K[i][w] \gets K[i-1][w]  $}
+			\EndIf
+		\EndFor
+	\EndFor
+	\State {$  \mathbf{return}  \ K[n][W] $}
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+\end{frame}
+\end{document}
